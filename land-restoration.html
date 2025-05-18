@@ -1,0 +1,594 @@
+<html class="scroll-smooth" lang="en" style="scroll-behavior:smooth;">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Land Claim Project - Dloziville Ancestry Project
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@17.0.2"></script>
+  <script>
+    const { Client } = Appwrite;
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/humanoid@0.0.6/dist/humanoid.min.js"></script>
+  <style>
+
+   body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    /* Porsche-inspired colors and style */
+    .primary-color {
+      color: #e10600;
+    }
+    .primary-bg {
+      background-color: #e10600;
+    }
+    .primary-bg-hover:hover {
+      background-color: #b00400;
+    }
+    .border-bottom {
+      border-bottom: 2px solid #e10600;
+    }
+    /* Buttons */
+    .btn-primary {
+      background-color: #e10600;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #b00400;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.4);
+    }
+    /* Inputs */
+    input, textarea, select {
+      border: 1px solid #ccc;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #e10600;
+      box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.3);
+      outline: none;
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f5f5f5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #e10600;
+      border-radius: 10px;
+      border: 2px solid #f5f5f5;
+    }
+    /* Link underline on hover */
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Dark mode overrides */
+    .dark body {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    .dark header {
+      background-color: #1e1e1e;
+      border-color: #333;
+    }
+    .dark .primary-color {
+      color: #f87171;
+    }
+    .dark .primary-bg {
+      background-color: #f87171;
+    }
+    .dark .primary-bg-hover:hover {
+      background-color: #ef4444;
+    }
+    .dark .border-bottom {
+      border-bottom-color: #f87171;
+    }
+    .dark .btn-primary {
+      background-color: #f87171;
+      color: #1a1a1a;
+    }
+    .dark .btn-primary:hover,
+    .dark .btn-primary:focus {
+      background-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.6);
+    }
+    .dark input, .dark textarea, .dark select {
+      border-color: #555;
+      background-color: #222;
+      color: #e0e0e0;
+    }
+    .dark input:focus, .dark textarea:focus, .dark select:focus {
+      border-color: #f87171;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.4);
+      outline: none;
+      background-color: #222;
+      color: #e0e0e0;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #1e1e1e;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background-color: #f87171;
+      border: 2px solid #1e1e1e;
+    }
+    .dark footer {
+      background-color: #1e1e1e;
+      color: #bbb;
+      border-color: #333;
+    }
+    .dark .text-yellow-600 {
+      color: #999 !important;
+    }
+    .dark .text-yellow-500 {
+      color: #888 !important;
+    }
+    .dark .text-yellow-900 {
+      color: #e0e0e0 !important;
+    }
+    .dark .text-yellow-800 {
+      color: #d0d0d0 !important;
+    }
+    .dark .text-yellow-400 {
+      color: #666 !important;
+    }
+    .dark .text-yellow-300 {
+      color: #555 !important;
+    }
+    .dark .text-yellow-200 {
+      color: #444 !important;
+    }
+    .dark .text-yellow-100 {
+      color: #333 !important;
+    }
+    .dark .text-yellow-50 {
+      color: #222 !important;
+    }
+    /* Toggle switch */
+    .toggle-bg {
+      background-color: #e10600;
+      transition: background-color 0.3s ease;
+    }
+    .toggle-bg.dark {
+      background-color: #f87171;
+    }
+  </style>
+
+ </head>
+ <body class="min-h-screen flex flex-col transition-colors duration-500">
+  <header class="sticky top-0 z-40 bg-white border-b border-gray-200 dark:bg-[#1e1e1e] dark:border-gray-700 transition-colors duration-500">
+   <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between">
+    <div class="flex items-center space-x-4">
+     <img alt="Dloziville Ancestry Project logo, stylized tree with roots and branches in black and red" class="w-14 h-14 object-contain" height="56" src="https://storage.googleapis.com/a1aa/image/43fb23f2-409b-4e3a-a3ad-a9793454217f.jpg" width="56"/>
+     <h1 class="text-3xl primary-color dark:text-[#f87171] select-none tracking-wide">
+      Land Claim Project
+     </h1>
+    </div>
+
+    <div class="mt-4 sm:mt-0 flex items-center space-x-6 text-yellow-800 dark:text-yellow-300 text-sm font-semibold">
+        <div class="flex items-center space-x-2 group cursor-pointer" id="admin-login">
+            <a href="login.html" class="flex items-center space-x-2 group cursor-pointer" id="admin-login">
+                <i class="fas fa-user-circle text-2xl primary-color dark:text-[#f87171] group-hover:text-[#b00400] dark:group-hover:text-[#ef4444] transition"></i>
+              </a>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button aria-pressed="false" aria-label="Toggle dark mode" class="relative inline-flex items-center h-6 w-11 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-[#e10600] dark:focus:ring-[#f87171]" id="dark-mode-toggle" role="switch" type="button">
+            <span class="sr-only">Toggle dark mode</span>
+            <span aria-hidden="true" class="toggle-bg absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-[#e10600] dark:bg-[#f87171] shadow-md transform transition-transform duration-300 ease-in-out"></span>
+            <i class="fas fa-sun absolute left-1.5 text-yellow-400 dark:hidden"></i>
+            <i class="fas fa-moon absolute right-1.5 text-yellow-900 hidden dark:block"></i>
+          </button>
+        </div>
+      </div>
+
+   </div>
+  </header>
+  <main class="flex-grow max-w-7xl mx-auto px-6 py-12 transition-colors duration-500">
+   <section class="mb-14 max-w-4xl mx-auto">
+    <h2 class="text-4xl font-extrabold primary-color dark:text-[#f87171] mb-6 leading-tight tracking-wide">
+     Welcome to the Dloziville Ancestry Project
+    </h2>
+    <p class="mb-6 text-lg leading-relaxed text-yellow-800 dark:text-yellow-300">
+     Our mission is to reconnect all young black South Africans with their clan, tribe and other history where our governing bodies have failed to provide access to this information.
+     This will allow us to reconnect with our roots and heal our generational traumas that were inflicted by the advent of colonisation.
+    </p>
+    <p class="mb-6 text-lg leading-relaxed text-yellow-800 dark:text-yellow-300">
+     Our vision is to redistribute land to the black majority using spiritual and legal information. All South Africans deserve to live in a dignified environment with access to basic services as outlined in our constitution.
+     This is done in collaboration with traditional leaders and legal professionals.
+    </p>
+    <p class="mb-6 text-lg leading-relaxed text-yellow-800 dark:text-yellow-300">
+     This form serves to collect information required in order to determine whether you have ownership of land or property as well as to map out your ancestry.
+    </p>
+    <p class="mb-6 text-lg font-semibold primary-color dark:text-[#f87171]">
+     Kindly respect the project and the process by making the necessary payments. We are not funded by any private, public or civil entities.
+    </p>
+   
+   </section>
+   <form id="land-claim-form" class="bg-white dark:bg-[#222] rounded-lg shadow-lg p-10 max-w-4xl mx-auto transition-colors duration-500" enctype="multipart/form-data" method="POST" novalidate="">
+    <fieldset class="mb-8">
+     <label class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-2 text-lg" for="email">
+      Email
+      <span class="text-red-600">
+       *
+      </span>
+     </label>
+     <input aria-describedby="email-desc" class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="email" name="email" required="" type="email" placeholder="Enter Your E-mail"/>
+     
+    </fieldset>
+    <fieldset class="mb-8">
+     <label class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-2 text-lg" for="full-names">
+      Your Full Names as they appear on your Identity Document
+      <span class="text-red-600">
+       *
+      </span>
+     </label>
+     <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="full-names" name="full-names" placeholder="Enter your full names" required="" type="text"/>
+    </fieldset>
+    <fieldset class="mb-8">
+     <label class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-2 text-lg" for="contact-number">
+      Your Contact Number
+      <span class="text-red-600">
+       *
+      </span>
+     </label>
+     <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="contact-number" name="contact-number" placeholder="+27 123 456 7890" required="" type="tel"/>
+    </fieldset>
+    <fieldset class="mb-8">
+     <label class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-2 text-lg" for="surnames">
+      List the surname(s) to be researched together with the clan praises of each as far as you know them.
+     </label>
+     <textarea class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 resize-y bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="surnames" name="surnames" placeholder="Enter surnames and clan praises here" rows="5"></textarea>
+     <p class="mt-2 text-sm font-semibold text-[#e10600] dark:text-[#f87171]">
+      The cost is R700 per surname.
+     </p>
+    </fieldset>
+
+    <fieldset class="mb-8">
+        <legend class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-3 text-lg">
+          Select the deed office for the land in question.
+        </legend>
+        <p class="mb-4 text-[#e10600] dark:text-[#f87171] font-semibold text-sm">
+          The cost for deed verification is R800.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Bloemfontein"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Bloemfontein</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Cape Town"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Cape Town</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Johannesburg"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Johannesburg</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Kimberley"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Kimberley</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="King Williams Town"/>
+            <span class="text-yellow-900 dark:text-yellow-200">King Williams Town</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Mpumalanga"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Mpumalanga</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Pietermaritzburg"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Pietermaritzburg</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Pretoria"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Pretoria</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Umthatha"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Umthatha</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Vryburg"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Vryburg</span>
+          </label>
+          <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer">
+            <input class="form-radio h-5 w-5 text-[#e10600] dark:text-[#f87171] focus:ring-[#e10600] dark:focus:ring-[#f87171]" name="deed-office" type="radio" value="Limpopo"/>
+            <span class="text-yellow-900 dark:text-yellow-200">Limpopo</span>
+          </label>
+        </div>
+      </fieldset>
+    
+    <fieldset class="mb-8">
+     <label class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-2 text-lg" for="lpi-code">
+      List the LPI code of the property if it is known.
+     </label>
+     <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="lpi-code" name="lpi-code" placeholder="Enter LPI code" type="text"/>
+    </fieldset>
+    <fieldset class="mb-8">
+     <legend class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-4 text-lg">
+      If the land in question is a Farm, list the following:
+     </legend>
+     <div class="space-y-6 max-w-md">
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="farm-name">
+        Farm Name
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="farm-name" name="farm-name" placeholder="Enter farm name" type="text"/>
+      </div>
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="farm-number">
+        Farm Number
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="farm-number" name="farm-number" placeholder="Enter farm number" type="text"/>
+      </div>
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="portion-name-farm">
+        Portion Name
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="portion-name-farm" name="portion-name-farm" placeholder="Enter portion name" type="text"/>
+      </div>
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="registration-division">
+        Registration Division
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="registration-division" name="registration-division" placeholder="Enter registration division" type="text"/>
+      </div>
+     </div>
+    </fieldset>
+    <fieldset class="mb-8">
+     <legend class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-4 text-lg">
+      If the land in question is an Erf, list the following:
+     </legend>
+     <div class="space-y-6 max-w-md">
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="erf-number">
+        Erf Number
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="erf-number" name="erf-number" placeholder="Enter erf number" type="text"/>
+      </div>
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="township-name">
+        Township Name
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="township-name" name="township-name" placeholder="Enter township name" type="text"/>
+      </div>
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="portion-name-erf">
+        Portion Name
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="portion-name-erf" name="portion-name-erf" placeholder="Enter portion name" type="text"/>
+      </div>
+     </div>
+    </fieldset>
+    <fieldset class="mb-8">
+     <legend class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-4 text-lg">
+      If the land in question is an Agricultural Holding, list the following:
+     </legend>
+     <div class="space-y-6 max-w-md">
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="holding-area">
+        Holding Area
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="holding-area" name="holding-area" placeholder="Enter holding area" type="text"/>
+      </div>
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="holding-number">
+        Holding Number
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="holding-number" name="holding-number" placeholder="Enter holding number" type="text"/>
+      </div>
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="portion-number">
+        Portion Number
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="portion-number" name="portion-number" placeholder="Enter portion number" type="text"/>
+      </div>
+     </div>
+    </fieldset>
+    <fieldset class="mb-8">
+     <legend class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-4 text-lg">
+      If the land in question is a Sectional Scheme, list the following:
+     </legend>
+     <div class="space-y-6 max-w-md">
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="sectional-scheme-name">
+        Sectional Scheme Name
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="sectional-scheme-name" name="sectional-scheme-name" placeholder="Enter sectional scheme name" type="text"/>
+      </div>
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="sectional-scheme-number">
+        Sectional Scheme Number
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="sectional-scheme-number" name="sectional-scheme-number" placeholder="Enter sectional scheme number" type="text"/>
+      </div>
+      <div>
+       <label class="block text-yellow-900 dark:text-yellow-200 font-medium mb-1" for="sectional-scheme-type">
+        Sectional Scheme Type (Unit, EUA or Contract) with the relevant Number
+       </label>
+       <input class="w-full rounded-md px-4 py-3 text-yellow-900 dark:text-yellow-200 placeholder-gray-400 dark:placeholder-gray-500 bg-white dark:bg-[#222] border border-gray-300 dark:border-gray-600 focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:border-[#e10600] dark:focus:border-[#f87171]" id="sectional-scheme-type" name="sectional-scheme-type" placeholder="Enter type and relevant number" type="text"/>
+      </div>
+     </div>
+    </fieldset>
+    <fieldset class="mb-8">
+     <label class="block text-yellow-900 dark:text-yellow-200 font-semibold mb-3 text-lg" for="file-upload">
+      Please upload any identity documents, proof of title, proof of ownership and any other document related to the research.
+     </label>
+     <p class="mb-4 text-sm text-yellow-600 dark:text-yellow-400">
+      We value your privacy and the information will be kept confidential.
+     </p>
+     <input accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.txt" aria-describedby="file-upload-desc" class="block w-full text-sm text-[#e10600] dark:text-[#f87171] file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#fceaea] dark:file:bg-[#3b1a1a] file:text-[#e10600] dark:file:text-[#f87171] hover:file:bg-[#f9d6d6] dark:hover:file:bg-[#5a2a2a] focus:outline-none focus:ring-4 focus:ring-[#e10600] dark:focus:ring-[#f87171] focus:ring-offset-1" id="file-upload" multiple="" name="file-upload" type="file"/>
+     <p class="mt-1 text-xs text-yellow-500 dark:text-yellow-400" id="file-upload-desc">
+      Upload up to 5 supported files. Max 50 MB per file.
+     </p>
+    </fieldset>
+    <div class="pt-6">
+     <button class="btn-primary w-full sm:w-auto font-semibold px-8 py-4 rounded-md shadow-md focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-[#e10600] dark:focus:ring-[#f87171] transition" type="submit">
+      Submit
+     </button>
+    </div>
+   </form>
+  </main>
+  <footer class="bg-gray-100 border-t border-gray-300 dark:bg-[#1e1e1e] dark:border-gray-700 dark:text-yellow-400 py-8 mt-16 transition-colors duration-500">
+   <div class="max-w-7xl mx-auto px-6 text-center text-sm select-none">
+    © 2024 Dloziville Ancestry Project. All rights reserved.
+   </div>
+  </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Humanoid on the email span
+            if (window.Humanoid) {
+                Humanoid.humanoidify(document.getElementById('humanoid-email'));
+            }
+            
+            // Dark mode toggle functionality
+            const toggleBtn = document.getElementById('dark-mode-toggle');
+            const toggleBg = toggleBtn.querySelector('.toggle-bg');
+            const sunIcon = toggleBtn.querySelector('.fa-sun');
+            const moonIcon = toggleBtn.querySelector('.fa-moon');
+            
+            // Load saved preference or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+                toggleBtn.setAttribute('aria-pressed', 'true');
+                toggleBg.classList.add('translate-x-5');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                toggleBtn.setAttribute('aria-pressed', 'false');
+                toggleBg.classList.remove('translate-x-5');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+            
+            toggleBtn.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.toggle('dark');
+                toggleBtn.setAttribute('aria-pressed', isDark.toString());
+                if (isDark) {
+                    toggleBg.classList.add('translate-x-5');
+                    sunIcon.classList.add('hidden');
+                    moonIcon.classList.remove('hidden');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    toggleBg.classList.remove('translate-x-5');
+                    sunIcon.classList.remove('hidden');
+                    moonIcon.classList.add('hidden');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
+           // Initialize Appwrite
+            const client = new Appwrite.Client()
+            .setEndpoint('https://fra.cloud.appwrite.io/v1')
+            .setProject('680b9ce400285c7afee2'); // AncestryCharting Project ID
+
+            const databases = new Appwrite.Databases(client);
+            const storage = new Appwrite.Storage(client);
+
+            // Form submission
+            document.getElementById('land-claim-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            try {
+                // Collect form data
+                const formData = {
+                email: document.getElementById('email').value,
+                fullNames: document.getElementById('full-names').value,
+                contactNumber: document.getElementById('contact-number').value,
+                surnames: document.getElementById('surnames').value,
+                deedOffice: document.querySelector('input[name="deed-office"]:checked')?.value || '',
+                lpiCode: document.getElementById('lpi-code').value,
+                farmName: document.getElementById('farm-name').value,
+                farmNumber: document.getElementById('farm-number').value,
+                portionNameFarm: document.getElementById('portion-name-farm').value,
+                registrationDivision: document.getElementById('registration-division').value,
+                erfNumber: document.getElementById('erf-number').value,
+                townshipName: document.getElementById('township-name').value,
+                portionNameErf: document.getElementById('portion-name-erf').value,
+                holdingArea: document.getElementById('holding-area').value,
+                holdingNumber: document.getElementById('holding-number').value,
+                portionNumber: document.getElementById('portion-number').value,
+                sectionalSchemeName: document.getElementById('sectional-scheme-name').value,
+                sectionalSchemeNumber: document.getElementById('sectional-scheme-number').value,
+                sectionalSchemeType: document.getElementById('sectional-scheme-type').value,
+                status: 'Pending',
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+                };
+
+                // Submit to Appwrite Database
+                const claim = await databases.createDocument(
+                '680fd941002cc495f230', // LandClaimProject DB ID
+                '680fd965000bdd163ea9', // claims Collection ID
+                'unique()', // Auto-generated ID
+                formData
+                );
+
+                // Handle file uploads if any
+                const fileInput = document.getElementById('file-upload');
+                if (fileInput.files.length > 0) {
+                  // Check number of files (limit to 5)
+                  if (fileInput.files.length > 5) {
+                    throw new Error('Maximum 5 files allowed');
+                  }
+
+                  // Process each file
+                  for (let file of fileInput.files) {
+                    // Check file size (limit to 100MB)
+                    if (file.size > 50 * 1024 * 1024) {
+                      throw new Error(`File ${file.name} exceeds 50MB limit`);
+                    }
+
+                    // Upload file to storage
+                    const uploadedFile = await storage.createFile(
+                      '680fef23003d57bdc9b7', // claim_documents Bucket ID
+                      'unique()',
+                      file
+                    );
+
+                    // Link file to claim in 'documents' collection
+                    await databases.createDocument(
+                      '680fd941002cc495f230', // LandClaimProject DB ID
+                      '680fd979003271a580d4', // documents Collection ID
+                      'unique()',
+                      {
+                        claimId: claim.$id,
+                        fileId: uploadedFile.$id,
+                        fileName: file.name,
+                        fileType: file.type,
+                        fileSize: file.size,
+                        uploadedAt: new Date().toISOString()
+                      }
+                    );
+                  }
+                }
+
+                alert('Claim submitted successfully!');
+                    e.target.reset(); 
+                    
+                } catch (error) {
+                    console.error('Submission failed:', error.message, error); // Add this
+                    alert('Error submitting claim. Please try again.');
+                }
+
+            });
+        });
+    </script>
+
+ </body>
+</html>

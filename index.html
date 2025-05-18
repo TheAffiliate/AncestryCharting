@@ -1,0 +1,271 @@
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Page - Dark Theme</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    .primary-color {
+      color: #e10600;
+    }
+    .primary-bg {
+      background-color: #e10600;
+    }
+    .btn-primary {
+      background-color: #e10600;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #b00400;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.4);
+    }
+    .dark .primary-color {
+      color: #f87171;
+    }
+    .dark .primary-bg {
+      background-color: #f87171;
+    }
+    .dark .btn-primary {
+      background-color: #f87171;
+      color: #1a1a1a;
+    }
+    .dark .btn-primary:hover,
+    .dark .btn-primary:focus {
+      background-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.6);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e1e1e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #f87171;
+      border-radius: 10px;
+      border: 2px solid #1e1e1e;
+    }
+    .humanoid-icon {
+      width: 36px;
+      height: 36px;
+      color: #f87171;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .humanoid-icon:hover {
+      color: #ef4444;
+    }
+    a.icon-link i,
+    a.icon-link svg {
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    a.icon-link:hover i,
+    a.icon-link:hover svg {
+      color: #f87171;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="dark bg-gray-900 min-h-screen flex flex-col items-center p-6">
+  <nav class="w-full max-w-5xl bg-gray-800 rounded-lg shadow-md mb-12">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
+      <button aria-label="Login" title="Login" onclick="location.href='login.html'" class="focus:outline-none md:absolute md:right-6 md:top-1/2 md:transform md:-translate-y-1/2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="humanoid-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"></path>
+        </svg>
+      </button>
+      <h1 class="text-3xl font-semibold primary-color text-center flex-grow md:absolute md:left-1/2 md:transform md:-translate-x-1/2 md:flex md:justify-center md:w-auto">
+        Welcome to Dloziville
+      </h1>
+      <div class="w-9 md:hidden"></div>
+    </div>
+  </nav>
+  <main class="max-w-5xl w-full flex-grow space-y-12">
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <a href="#" aria-label="Contact Us" title="Contact Us" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+        <i class="fas fa-envelope text-6xl primary-color mb-4"></i>
+        <span class="text-xl font-semibold text-gray-200">Contact Us</span>
+      </a>
+      <a href="about.html" aria-label="About" title="About" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+        <i class="fas fa-info-circle text-6xl primary-color mb-4"></i>
+        <span class="text-xl font-semibold text-gray-200">About</span>
+      </a>
+      <a href="projects.html" aria-label="Projects" title="Projects" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+        <i class="fas fa-folder-open text-6xl primary-color mb-4"></i>
+        <span class="text-xl font-semibold text-gray-200">Projects</span>
+      </a>
+      <a href="services.html" aria-label="Services" title="Services" class="icon-link flex flex-col items-center bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+        <i class="fas fa-cogs text-6xl primary-color mb-4"></i>
+        <span class="text-xl font-semibold text-gray-200">Services</span>
+      </a>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+      <h2 class="text-2xl font-semibold mb-4 primary-color">Booking Calendar</h2>
+      <form id="booking-form" class="space-y-4 max-w-md">
+        <label for="booking-date" class="block font-semibold mb-1">Select Available Date:</label>
+        <input
+          type="date"
+          id="booking-date"
+          name="booking-date"
+          class="w-full rounded-md border border-gray-600 bg-gray-900 px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color"
+          min=""
+          required
+        />
+        <button
+          type="submit"
+          class="btn-primary px-4 py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color"
+        >
+          Book Date
+        </button>
+        <p id="booking-message" class="mt-2 text-sm"></p>
+      </form>
+    </section>
+
+    <!-- Reading Material Section -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+      <h2 class="text-2xl font-semibold mb-4 primary-color">Reading Material</h2>
+      <div id="reading-list" class="space-y-2 max-w-md">
+        <p class="italic text-gray-400">No reading materials available.</p>
+      </div>
+    </section>
+
+    <!-- Assignments Section -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+      <h2 class="text-2xl font-semibold mb-4 primary-color">Assignments</h2>
+      <form id="upload-assignment-form" class="mb-6 max-w-md space-y-4" enctype="multipart/form-data">
+        <label for="assignment-title" class="block font-semibold">Title:</label>
+        <input
+          type="text"
+          id="assignment-title"
+          name="assignment-title"
+          class="w-full rounded-md border border-gray-600 bg-gray-900 px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color"
+          required
+        />
+        <label for="assignment-file" class="block font-semibold">Upload File:</label>
+        <input
+          type="file"
+          id="assignment-file"
+          name="assignment-file"
+          accept=".pdf,.doc,.docx,.txt"
+          class="w-full text-gray-200"
+          required
+        />
+        <button
+          type="submit"
+          class="btn-primary px-4 py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color"
+        >
+          Upload Assignment
+        </button>
+      </form>
+      <div id="assignment-list" class="space-y-2 max-w-md">
+        <p class="italic text-gray-400">No assignments available.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="w-full max-w-7xl bg-gray-800 rounded-lg shadow-inner mt-12 p-6 text-gray-300">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center space-y-6 md:space-y-0">
+      <div class="flex space-x-6 justify-center md:justify-start items-center">
+        <a href="#" aria-label="Facebook" title="Facebook" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-facebook-f text-2xl"></i>
+        </a>
+        <a href="#" aria-label="Twitter" title="Twitter" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-twitter text-2xl"></i>
+        </a>
+        <a href="#" aria-label="Instagram" title="Instagram" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-instagram text-2xl"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-linkedin-in text-2xl"></i>
+        </a>
+      </div>
+      <div class="flex space-x-6 justify-center md:justify-center">
+        <a href="#" class="hover:text-primary-color transition-colors duration-300 font-semibold" title="Policies">Policies</a>
+        <a href="#" class="hover:text-primary-color transition-colors duration-300 font-semibold" title="FAQs">FAQs</a>
+      </div>
+      <div class="text-center md:text-right text-sm">
+        Built by KatlegoThatGuy © 2025 Dloziville
+      </div>
+      <form class="flex flex-wrap justify-center md:justify-end space-x-0 md:space-x-2 gap-2 md:gap-0" role="search" aria-label="Site Search">
+        <label for="footer-search" class="sr-only">Search</label>
+        <input id="footer-search" type="search" placeholder="Search..." class="rounded-l-md border border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color px-3 py-1 w-48" />
+        <button type="submit" class="btn-primary rounded-r-md px-4 py-1 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color" title="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <a href="register.html" class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap" title="Register">
+          Register
+        </a>
+        <a href="login.html" class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap" title="Login">
+          Login
+        </a>
+      </form>
+    </div>
+  </footer>
+
+  <script>
+    // Set min date for booking date input to today
+    const bookingDateInput = document.getElementById('booking-date');
+    const today = new Date().toISOString().split('T')[0];
+    bookingDateInput.setAttribute('min', today);
+
+    // Booking form submission
+    const bookingForm = document.getElementById('booking-form');
+    const bookingMessage = document.getElementById('booking-message');
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const selectedDate = bookingDateInput.value;
+      if (!selectedDate) {
+        bookingMessage.textContent = 'Please select a date.';
+        bookingMessage.classList.add('text-red-500');
+        return;
+      }
+      bookingMessage.textContent = `You have successfully booked the date: ${selectedDate}`;
+      bookingMessage.classList.remove('text-red-500');
+      bookingMessage.classList.add('text-green-400');
+      bookingForm.reset();
+    });
+
+    // Assignments upload handling
+    const assignmentForm = document.getElementById('upload-assignment-form');
+    const assignmentList = document.getElementById('assignment-list');
+    assignmentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const title = assignmentForm['assignment-title'].value.trim();
+      const fileInput = assignmentForm['assignment-file'];
+      if (!title || fileInput.files.length === 0) return;
+
+      const fileName = fileInput.files[0].name;
+      const item = document.createElement('div');
+      item.className = 'bg-gray-700 rounded-md p-3 flex justify-between items-center';
+      item.innerHTML = `
+        <span>${title} (${fileName})</span>
+        <a href="#" class="text-primary-color hover:underline" download="${fileName}">Download</a>
+      `;
+      // Remove "No assignments available." message if present
+      const noAssignmentsMsg = assignmentList.querySelector('p.italic');
+      if (noAssignmentsMsg) noAssignmentsMsg.remove();
+
+      assignmentList.appendChild(item);
+      assignmentForm.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Login - Dloziville Ancestry Project</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
+  <script>
+    const { Client } = Appwrite;
+  </script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #1a1a1a;
+      color: #e5e7eb;
+      transition: background-color 0.5s, color 0.5s;
+    }
+    .primary-color {
+      color: #f87171;
+    }
+    .primary-bg {
+      background-color: #f87171;
+    }
+    .btn-primary {
+      background-color: #f87171;
+      color: #1a1a1a;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #ef4444;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.6);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e1e1e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #f87171;
+      border-radius: 10px;
+      border: 2px solid #1e1e1e;
+    }
+    a:focus-visible {
+      outline: 2px solid #f87171;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-900 transition-colors duration-500">
+  <header class="sticky top-0 z-40 bg-gray-800 border-b border-gray-700">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <img
+          alt="Dloziville Ancestry Project logo, a stylized tree with roots and branches in red and white colors on dark background"
+          class="w-14 h-14 object-contain"
+          height="56"
+          src="https://storage.googleapis.com/a1aa/image/43fb23f2-409b-4e3a-a3ad-a9793454217f.jpg"
+          width="56"
+        />
+        <h1 class="text-2xl font-bold primary-color">Admin Dashboard</h1>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow flex items-center justify-center px-6 py-12">
+    <div class="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-8 transition-colors duration-500">
+      <h2 class="text-3xl font-bold primary-color mb-6 text-center">Sign in to your account</h2>
+      <form id="login-form" class="space-y-6" novalidate>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="w-full rounded-md border border-gray-600 px-3 py-2 text-gray-200 bg-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color transition"
+            placeholder="you@example.com"
+          />
+          <p id="email-error" class="mt-1 text-xs text-red-500 hidden">Please enter a valid email address.</p>
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-300 mb-1">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            autocomplete="current-password"
+            class="w-full rounded-md border border-gray-600 px-3 py-2 text-gray-200 bg-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color transition"
+            placeholder="••••••••"
+            minlength="6"
+          />
+          <p id="password-error" class="mt-1 text-xs text-red-500 hidden">Password must be at least 6 characters.</p>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input
+              id="remember-me"
+              name="remember-me"
+              type="checkbox"
+              class="h-4 w-4 text-primary-color focus:ring-primary-color border-gray-600 rounded"
+            />
+            <label for="remember-me" class="ml-2 block text-sm text-gray-300 select-none">Remember me</label>
+          </div>
+          <a href="#" class="text-sm text-primary-color hover:underline focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-color">Forgot your password?</a>
+        </div>
+        <button
+          type="submit"
+          class="btn-primary w-full py-3 rounded-md text-lg font-semibold shadow hover:shadow-md transition focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary-color"
+        >
+          Sign In
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="py-6 text-center text-gray-400 text-sm select-none">
+    &copy; 2024 Dloziville Ancestry Project. All rights reserved.
+  </footer>
+
+  <script>
+    const client = new Appwrite.Client()
+      .setEndpoint('https://fra.cloud.appwrite.io/v1')
+      .setProject('680b9ce400285c7afee2');
+
+    const account = new Appwrite.Account(client);
+
+    // On page load: Check for existing session
+    account.get()
+      .then(() => {
+        // If session exists, redirect to dashboard
+        window.location.href = 'admin-dashboard.html';
+      })
+      .catch(() => {
+        // No session, stay on login
+      });
+
+    // Login handler
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        await account.createEmailSession(email, password);
+        window.location.href = 'admin-dashboard.html';
+      } catch (error) {
+        console.error('Login failed:', error);
+        alert('Login failed. Check credentials or session status.');
+      }
+    });
+  </script>
+</body>
+</html>

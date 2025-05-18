@@ -1,0 +1,311 @@
+<html class="dark" lang="en">
+ <head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Projects - Dark Theme</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    .primary-color {
+      color: #e10600;
+    }
+    .primary-bg {
+      background-color: #e10600;
+    }
+    .btn-primary {
+      background-color: #e10600;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #b00400;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.4);
+    }
+    .dark .primary-color {
+      color: #f87171;
+    }
+    .dark .primary-bg {
+      background-color: #f87171;
+    }
+    .dark .btn-primary {
+      background-color: #f87171;
+      color: #1a1a1a;
+    }
+    .dark .btn-primary:hover,
+    .dark .btn-primary:focus {
+      background-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.6);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e1e1e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #f87171;
+      border-radius: 10px;
+      border: 2px solid #1e1e1e;
+    }
+    .humanoid-icon {
+      width: 36px;
+      height: 36px;
+      color: #f87171;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .humanoid-icon:hover {
+      color: #ef4444;
+    }
+    a.icon-link i,
+    a.icon-link svg {
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    a.icon-link:hover i,
+    a.icon-link:hover svg {
+      color: #f87171;
+      transform: scale(1.1);
+    }
+    a:focus-visible {
+      outline: 2px solid #f87171;
+      outline-offset: 2px;
+    }
+  </style>
+ </head>
+ <body class="dark bg-gray-900 min-h-screen flex flex-col items-center p-6">
+  <nav class="w-full max-w-5xl bg-gray-800 rounded-lg shadow-md mb-12">
+   <div
+     class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 relative"
+   >
+    <h1 class="text-3xl font-semibold primary-color">Dloziville Projects</h1>
+    <div class="flex space-x-4">
+     <button
+       aria-label="Login"
+       title="Login"
+       onclick="location.href='login.html'"
+       class="focus:outline-none"
+     >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="humanoid-icon"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+       <path
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         d="M12 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"
+       ></path>
+      </svg>
+     </button>
+     <button
+       aria-label="Home"
+       class="focus:outline-none text-gray-400 hover:text-primary-color transition-colors duration-300"
+       onclick="location.href='index.html'"
+       title="Home"
+     >
+      <i class="fas fa-home fa-lg"></i>
+     </button>
+    </div>
+   </div>
+  </nav>
+  <main class="max-w-5xl w-full space-y-16">
+   <!-- Traditional Healthcare Section -->
+   <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+    <h2 class="text-4xl font-semibold mb-8 primary-color text-center">
+     Traditional Healthcare
+    </h2>
+    <div class="max-w-4xl mx-auto space-y-8">
+     <div>
+      <h3 class="text-2xl font-semibold mb-3 primary-color">Our Mission</h3>
+      <p class="text-lg leading-relaxed">
+       Our mission is to educate the community on their past, their heritage
+       and their potential to be everything that their Ancestors were unable
+       to be.
+      </p>
+     </div>
+     <div>
+      <h3 class="text-2xl font-semibold mb-3 primary-color">Our Vision</h3>
+      <p class="text-lg leading-relaxed">
+       Our vision is to create a platform for Africans on the continent and in
+       the Diaspora to be able to access information about their history and
+       heritage.
+      </p>
+     </div>
+     <div class="text-center mt-8">
+      <a
+        class="btn-primary px-8 py-3 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color inline-flex items-center justify-center"
+        href="https://bit.ly/DlozivilleDonation"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+       <i class="fas fa-heart mr-2"></i> Donate
+      </a>
+     </div>
+    </div>
+   </section>
+   <!-- Traditional Education Section -->
+   <section class="bg-gray-800 rounded-lg shadow-md p-8 text-gray-200">
+    <h2 class="text-4xl font-semibold mb-8 primary-color text-center">
+     Traditional Education
+    </h2>
+    <div class="max-w-6xl mx-auto space-y-12">
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div>
+       <h3 class="text-2xl font-semibold mb-3 primary-color">Our Mission</h3>
+       <p class="text-lg leading-relaxed">
+        Our mission is to promote a healthier more holistic lifestyle through
+        the consumption of organic food and the use of natural remedies for
+        ailments particularly in rural and peri-urban areas.
+       </p>
+      </div>
+      <div class="flex justify-center">
+       <img
+         alt="A vibrant rural scene showing people harvesting organic food and preparing natural remedies in a traditional setting"
+         class="rounded-lg shadow-lg max-w-full h-auto"
+         height="400"
+         loading="lazy"
+         src="https://storage.googleapis.com/a1aa/image/261167cd-33e2-4dac-2292-2a2e0c54f419.jpg"
+         width="600"
+       />
+      </div>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="order-2 md:order-1 flex justify-center">
+       <img
+         alt="A research facility with African traditional medicine practitioners testing natural treatments aligned with African laws of nature"
+         class="rounded-lg shadow-lg max-w-full h-auto"
+         height="400"
+         loading="lazy"
+         src="https://storage.googleapis.com/a1aa/image/1870ba1a-ef1f-4918-b051-492861c59333.jpg"
+         width="600"
+       />
+      </div>
+      <div class="order-1 md:order-2">
+       <h3 class="text-2xl font-semibold mb-3 primary-color">Our Vision</h3>
+       <p class="text-lg leading-relaxed">
+        Our vision is to establish a facility where we will research and test
+        African medical methods and treatments that align with the African laws
+        of nature.
+       </p>
+      </div>
+     </div>
+     <div class="text-center mt-8">
+      <a
+        class="btn-primary px-8 py-3 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color inline-flex items-center justify-center"
+        href="https://bit.ly/DlozivilleDonation"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+       <i class="fas fa-heart mr-2"></i> Donate
+      </a>
+     </div>
+    </div>
+   </section>
+  </main>
+  <footer
+    class="w-full max-w-7xl bg-gray-800 rounded-lg shadow-inner mt-12 p-6 text-gray-300"
+  >
+   <div
+     class="flex flex-col md:flex-row md:justify-between md:items-center space-y-6 md:space-y-0"
+   >
+    <div class="flex space-x-6 justify-center md:justify-start items-center">
+     <a
+       href="#"
+       aria-label="Facebook"
+       title="Facebook"
+       class="icon-link hover:text-primary-color transition-colors duration-300"
+       ><i class="fab fa-facebook-f text-2xl"></i
+     ></a>
+     <a
+       href="#"
+       aria-label="Twitter"
+       title="Twitter"
+       class="icon-link hover:text-primary-color transition-colors duration-300"
+       ><i class="fab fa-twitter text-2xl"></i
+     ></a>
+     <a
+       href="#"
+       aria-label="Instagram"
+       title="Instagram"
+       class="icon-link hover:text-primary-color transition-colors duration-300"
+       ><i class="fab fa-instagram text-2xl"></i
+     ></a>
+     <a
+       href="#"
+       aria-label="LinkedIn"
+       title="LinkedIn"
+       class="icon-link hover:text-primary-color transition-colors duration-300"
+       ><i class="fab fa-linkedin-in text-2xl"></i
+     ></a>
+    </div>
+    <div class="flex space-x-6 justify-center md:justify-center">
+     <a
+       href="#"
+       class="hover:text-primary-color transition-colors duration-300 font-semibold"
+       title="Policies"
+       >Policies</a
+     >
+     <a
+       href="#"
+       class="hover:text-primary-color transition-colors duration-300 font-semibold"
+       title="FAQs"
+       >FAQs</a
+     >
+    </div>
+    <div class="text-center md:text-right text-sm">
+     Built by KatlegoThatGuy © 2025 Dloziville
+    </div>
+    <form
+      class="flex flex-wrap justify-center md:justify-end space-x-0 md:space-x-2 gap-2 md:gap-0"
+      role="search"
+      aria-label="Site Search"
+    >
+     <label for="footer-search" class="sr-only">Search</label>
+     <input
+       id="footer-search"
+       type="search"
+       placeholder="Search..."
+       class="rounded-l-md border border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color px-3 py-1 w-48"
+     />
+     <button
+       type="submit"
+       class="btn-primary rounded-r-md px-4 py-1 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color"
+       title="Search"
+     >
+      <i class="fas fa-search"></i>
+     </button>
+     <a
+       href="register.html"
+       class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap"
+       title="Register"
+       >Register</a
+     >
+     <a
+       href="login.html"
+       class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap"
+       title="Login"
+       >Login</a
+     >
+    </form>
+   </div>
+  </footer>
+ </body>
+</html>

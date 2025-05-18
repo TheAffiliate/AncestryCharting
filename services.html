@@ -1,0 +1,505 @@
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services - Dark Theme</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+    .primary-color {
+      color: #e10600;
+    }
+    .primary-bg {
+      background-color: #e10600;
+    }
+    .btn-primary {
+      background-color: #e10600;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #b00400;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.4);
+    }
+    .dark .primary-color {
+      color: #f87171;
+    }
+    .dark .primary-bg {
+      background-color: #f87171;
+    }
+    .dark .btn-primary {
+      background-color: #f87171;
+      color: #1a1a1a;
+    }
+    .dark .btn-primary:hover,
+    .dark .btn-primary:focus {
+      background-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.6);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e1e1e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #f87171;
+      border-radius: 10px;
+      border: 2px solid #1e1e1e;
+    }
+    .humanoid-icon {
+      width: 36px;
+      height: 36px;
+      color: #f87171;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .humanoid-icon:hover {
+      color: #ef4444;
+    }
+    a.icon-link i,
+    a.icon-link svg {
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    a.icon-link:hover i,
+    a.icon-link:hover svg {
+      color: #f87171;
+      transform: scale(1.1);
+    }
+    a:focus-visible {
+      outline: 2px solid #f87171;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="dark bg-gray-900 min-h-screen flex flex-col items-center p-6">
+  <nav class="w-full max-w-5xl bg-gray-800 rounded-lg shadow-md mb-12">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 relative">
+      <h1 class="text-3xl font-semibold primary-color">Our Services</h1>
+      <div class="flex space-x-4">
+        <button aria-label="Login" title="Login" onclick="location.href='login.html'" class="focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="humanoid-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" role="img" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2" />
+          </svg>
+        </button>
+        <button aria-label="Home" class="focus:outline-none text-gray-400 hover:text-primary-color transition-colors duration-300" onclick="location.href='index.html'" title="Home">
+          <i class="fas fa-home fa-lg"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl w-full flex-grow space-y-12">
+    <!-- General Consultation -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+      <h2 class="text-2xl font-semibold mb-6 primary-color flex items-center">
+        <i class="fas fa-stethoscope mr-3 text-primary-color text-3xl"></i> General Consultation
+      </h2>
+      <form id="general-consultation-form" class="space-y-4 max-w-md">
+        <button type="button" aria-expanded="false" aria-controls="general-consultation-dropdown" id="general-consultation-toggle" class="w-full flex justify-between items-center btn-primary px-4 py-2 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color">
+          Book a Consultation
+          <i class="fas fa-chevron-down ml-2 transition-transform duration-300" aria-hidden="true"></i>
+        </button>
+        <div id="general-consultation-dropdown" class="hidden mt-4 bg-gray-900 rounded-md p-4 space-y-4">
+          <label for="gc-name" class="block font-semibold">Full Name:</label>
+          <input type="text" id="gc-name" name="gc-name" required class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color" />
+          
+          <label for="gc-email" class="block font-semibold">Email Address:</label>
+          <input type="email" id="gc-email" name="gc-email" required class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color" />
+          
+          <label for="gc-date" class="block font-semibold">Preferred Date:</label>
+          <input type="date" id="gc-date" name="gc-date" required class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color" min="" />
+          
+          <button type="submit" class="btn-primary w-full px-4 py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color">
+            Submit
+          </button>
+          <p id="gc-message" class="mt-2 text-sm"></p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Ancestry Mapping -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+      <h2 class="text-2xl font-semibold mb-6 primary-color flex items-center">
+        <i class="fas fa-tree mr-3 text-primary-color text-3xl"></i> Ancestry Mapping
+      </h2>
+      <form id="ancestry-mapping-form" class="space-y-4 max-w-md">
+        <button type="button" aria-expanded="false" aria-controls="ancestry-mapping-dropdown" id="ancestry-mapping-toggle" class="w-full flex justify-between items-center btn-primary px-4 py-2 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color">
+          Request Ancestry Mapping
+          <i class="fas fa-chevron-down ml-2 transition-transform duration-300" aria-hidden="true"></i>
+        </button>
+        <div id="ancestry-mapping-dropdown" class="hidden mt-4 bg-gray-900 rounded-md p-4 space-y-4">
+          <label for="am-name" class="block font-semibold">Full Name:</label>
+          <input type="text" id="am-name" name="am-name" required class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color" />
+          
+          <label for="am-email" class="block font-semibold">Email Address:</label>
+          <input type="email" id="am-email" name="am-email" required class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color" />
+          
+          <label for="am-details" class="block font-semibold">Known Family Details:</label>
+          <textarea id="am-details" name="am-details" rows="4" placeholder="Provide any known family information" class="w-full rounded-md border border-gray-600 bg-gray-800 px-3 py-2 text-gray-200 resize-y focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color"></textarea>
+          
+          <button type="submit" class="btn-primary w-full px-4 py-2 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color">
+            Submit
+          </button>
+          <p id="am-message" class="mt-2 text-sm"></p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Land Restoration -->
+    <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+      <h2 class="text-2xl font-semibold mb-6 primary-color flex items-center">
+        <i class="fas fa-seedling mr-3 text-primary-color text-3xl"></i> Land Restoration
+      </h2>
+      <form id="land-restoration-form" class="space-y-4 max-w-full">
+        <button type="button" aria-expanded="false" aria-controls="land-restoration-dropdown" id="land-restoration-toggle" class="w-full flex justify-between items-center btn-primary px-4 py-2 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color">
+          Schedule Land Restoration
+          <i class="fas fa-chevron-down ml-2 transition-transform duration-300" aria-hidden="true"></i>
+        </button>
+        <div id="land-restoration-dropdown" class="hidden mt-4 bg-gray-900 rounded-md p-6 overflow-auto max-h-[80vh]">
+          <form id="land-claim-form" class="space-y-8" enctype="multipart/form-data" method="POST" novalidate>
+            <fieldset class="mb-8">
+              <label class="block font-semibold mb-2 text-lg" for="email">
+                Email
+                <span class="text-red-600">*</span>
+              </label>
+              <input aria-describedby="email-desc" class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="email" name="email" required type="email" placeholder="Enter Your E-mail" />
+            </fieldset>
+            <fieldset class="mb-8">
+              <label class="block font-semibold mb-2 text-lg" for="full-names">
+                Your Full Names as they appear on your Identity Document
+                <span class="text-red-600">*</span>
+              </label>
+              <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="full-names" name="full-names" placeholder="Enter your full names" required type="text" />
+            </fieldset>
+            <fieldset class="mb-8">
+              <label class="block font-semibold mb-2 text-lg" for="contact-number">
+                Your Contact Number
+                <span class="text-red-600">*</span>
+              </label>
+              <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="contact-number" name="contact-number" placeholder="+27 123 456 7890" required type="tel" />
+            </fieldset>
+            <fieldset class="mb-8">
+              <label class="block font-semibold mb-2 text-lg" for="surnames">
+                List the surname(s) to be researched together with the clan praises of each as far as you know them.
+              </label>
+              <textarea class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 resize-y focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="surnames" name="surnames" placeholder="Enter surnames and clan praises here" rows="5"></textarea>
+              <p class="mt-2 text-sm font-semibold text-primary-color">
+                The cost is R700 per surname.
+              </p>
+            </fieldset>
+
+            <fieldset class="mb-8">
+              <legend class="block font-semibold mb-3 text-lg">
+                Select the deed office for the land in question.
+              </legend>
+              <p class="mb-4 text-primary-color font-semibold text-sm">
+                The cost for deed verification is R800.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Bloemfontein" />
+                  <span class="text-gray-200">Bloemfontein</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Cape Town" />
+                  <span class="text-gray-200">Cape Town</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Johannesburg" />
+                  <span class="text-gray-200">Johannesburg</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Kimberley" />
+                  <span class="text-gray-200">Kimberley</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="King Williams Town" />
+                  <span class="text-gray-200">King Williams Town</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Mpumalanga" />
+                  <span class="text-gray-200">Mpumalanga</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Pietermaritzburg" />
+                  <span class="text-gray-200">Pietermaritzburg</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Pretoria" />
+                  <span class="text-gray-200">Pretoria</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Umthatha" />
+                  <span class="text-gray-200">Umthatha</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Vryburg" />
+                  <span class="text-gray-200">Vryburg</span>
+                </label>
+                <label class="flex items-center space-x-3 p-2 rounded hover:bg-gray-700 transition cursor-pointer">
+                  <input class="form-radio h-5 w-5 text-primary-color focus:ring-primary-color" name="deed-office" type="radio" value="Limpopo" />
+                  <span class="text-gray-200">Limpopo</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-8">
+              <label class="block font-semibold mb-2 text-lg" for="lpi-code">
+                List the LPI code of the property if it is known.
+              </label>
+              <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="lpi-code" name="lpi-code" placeholder="Enter LPI code" type="text" />
+            </fieldset>
+
+            <fieldset class="mb-8">
+              <legend class="block font-semibold mb-4 text-lg">
+                If the land in question is a Farm, list the following:
+              </legend>
+              <div class="space-y-6 max-w-md">
+                <div>
+                  <label class="block font-medium mb-1" for="farm-name">Farm Name</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="farm-name" name="farm-name" placeholder="Enter farm name" type="text" />
+                </div>
+                <div>
+                  <label class="block font-medium mb-1" for="farm-number">Farm Number</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="farm-number" name="farm-number" placeholder="Enter farm number" type="text" />
+                </div>
+                <div>
+                  <label class="block font-medium mb-1" for="portion-name-farm">Portion Name</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="portion-name-farm" name="portion-name-farm" placeholder="Enter portion name" type="text" />
+                </div>
+                <div>
+                  <label class="block font-medium mb-1" for="registration-division">Registration Division</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="registration-division" name="registration-division" placeholder="Enter registration division" type="text" />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-8">
+              <legend class="block font-semibold mb-4 text-lg">
+                If the land in question is an Erf, list the following:
+              </legend>
+              <div class="space-y-6 max-w-md">
+                <div>
+                  <label class="block font-medium mb-1" for="erf-number">Erf Number</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="erf-number" name="erf-number" placeholder="Enter erf number" type="text" />
+                </div>
+                <div>
+                  <label class="block font-medium mb-1" for="township-name">Township Name</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="township-name" name="township-name" placeholder="Enter township name" type="text" />
+                </div>
+                <div>
+                  <label class="block font-medium mb-1" for="portion-name-erf">Portion Name</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="portion-name-erf" name="portion-name-erf" placeholder="Enter portion name" type="text" />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-8">
+              <legend class="block font-semibold mb-4 text-lg">
+                If the land in question is an Agricultural Holding, list the following:
+              </legend>
+              <div class="space-y-6 max-w-md">
+                <div>
+                  <label class="block font-medium mb-1" for="holding-area">Holding Area</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="holding-area" name="holding-area" placeholder="Enter holding area" type="text" />
+                </div>
+                <div>
+                  <label class="block font-medium mb-1" for="holding-number">Holding Number</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="holding-number" name="holding-number" placeholder="Enter holding number" type="text" />
+                </div>
+                <div>
+                  <label class="block font-medium mb-1" for="portion-number">Portion Number</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="portion-number" name="portion-number" placeholder="Enter portion number" type="text" />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-8">
+              <legend class="block font-semibold mb-4 text-lg">
+                If the land in question is a Sectional Scheme, list the following:
+              </legend>
+              <div class="space-y-6 max-w-md">
+                <div>
+                  <label class="block font-medium mb-1" for="sectional-scheme-name">Sectional Scheme Name</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="sectional-scheme-name" name="sectional-scheme-name" placeholder="Enter sectional scheme name" type="text" />
+                </div>
+                <div>
+                  <label class="block font-medium mb-1" for="sectional-scheme-number">Sectional Scheme Number</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="sectional-scheme-number" name="sectional-scheme-number" placeholder="Enter sectional scheme number" type="text" />
+                </div>
+                <div>
+                  <label class="block font-medium mb-1" for="sectional-scheme-type">Sectional Scheme Type (Unit, EUA or Contract) with the relevant Number</label>
+                  <input class="w-full rounded-md px-4 py-3 bg-gray-800 border border-gray-600 text-gray-200 placeholder-gray-400 focus:ring-4 focus:ring-primary-color focus:border-primary-color focus:outline-none" id="sectional-scheme-type" name="sectional-scheme-type" placeholder="Enter type and relevant number" type="text" />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="mb-8">
+              <label class="block font-semibold mb-3 text-lg" for="file-upload">
+                Please upload any identity documents, proof of title, proof of ownership and any other document related to the research.
+              </label>
+              <p class="mb-4 text-sm text-yellow-600 dark:text-yellow-400">
+                We value your privacy and the information will be kept confidential.
+              </p>
+              <input accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.txt" aria-describedby="file-upload-desc" class="block w-full text-sm text-primary-color file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-red-100 file:text-primary-color hover:file:bg-red-200 focus:outline-none focus:ring-4 focus:ring-primary-color focus:ring-offset-1" id="file-upload" multiple name="file-upload" type="file" />
+              <p class="mt-1 text-xs text-yellow-500 dark:text-yellow-400" id="file-upload-desc">
+                Upload up to 5 supported files. Max 50 MB per file.
+              </p>
+            </fieldset>
+            <div class="pt-6">
+              <button class="btn-primary w-full sm:w-auto font-semibold px-8 py-4 rounded-md shadow-md focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-primary-color transition" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="w-full max-w-7xl bg-gray-800 rounded-lg shadow-inner mt-12 p-6 text-gray-300">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center space-y-6 md:space-y-0">
+      <div class="flex space-x-6 justify-center md:justify-start items-center">
+        <a href="#" aria-label="Facebook" title="Facebook" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-facebook-f text-2xl"></i>
+        </a>
+        <a href="#" aria-label="Twitter" title="Twitter" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-twitter text-2xl"></i>
+        </a>
+        <a href="#" aria-label="Instagram" title="Instagram" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-instagram text-2xl"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn" title="LinkedIn" class="icon-link hover:text-primary-color transition-colors duration-300">
+          <i class="fab fa-linkedin-in text-2xl"></i>
+        </a>
+      </div>
+      <div class="flex space-x-6 justify-center md:justify-center">
+        <a href="#" class="hover:text-primary-color transition-colors duration-300 font-semibold" title="Policies">Policies</a>
+        <a href="#" class="hover:text-primary-color transition-colors duration-300 font-semibold" title="FAQs">FAQs</a>
+      </div>
+      <div class="text-center md:text-right text-sm">
+        Built by KatlegoThatGuy © 2025 Dloziville
+      </div>
+      <form class="flex flex-wrap justify-center md:justify-end space-x-0 md:space-x-2 gap-2 md:gap-0" role="search" aria-label="Site Search">
+        <label for="footer-search" class="sr-only">Search</label>
+        <input id="footer-search" type="search" placeholder="Search..." class="rounded-l-md border border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color px-3 py-1 w-48" />
+        <button type="submit" class="btn-primary rounded-r-md px-4 py-1 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color" title="Search">
+          <i class="fas fa-search"></i>
+        </button>
+        <a href="register.html" class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap" title="Register">
+          Register
+        </a>
+        <a href="login.html" class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap" title="Login">
+          Login
+        </a>
+      </form>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle dropdowns
+    function toggleDropdown(buttonId, dropdownId) {
+      const button = document.getElementById(buttonId);
+      const dropdown = document.getElementById(dropdownId);
+      const icon = button.querySelector('i.fas.fa-chevron-down');
+
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          dropdown.classList.add('hidden');
+          button.setAttribute('aria-expanded', 'false');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          dropdown.classList.remove('hidden');
+          button.setAttribute('aria-expanded', 'true');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
+
+    toggleDropdown('general-consultation-toggle', 'general-consultation-dropdown');
+    toggleDropdown('ancestry-mapping-toggle', 'ancestry-mapping-dropdown');
+    toggleDropdown('land-restoration-toggle', 'land-restoration-dropdown');
+
+    // Set min date for date inputs
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('gc-date').setAttribute('min', today);
+
+    // Form submissions with simple success message and reset
+    const gcForm = document.getElementById('general-consultation-form');
+    const gcMessage = document.getElementById('gc-message');
+    gcForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      gcMessage.textContent = '';
+      const name = gcForm['gc-name'].value.trim();
+      const email = gcForm['gc-email'].value.trim();
+      const date = gcForm['gc-date'].value;
+      if (!name || !email || !date) {
+        gcMessage.textContent = 'Please fill in all fields.';
+        gcMessage.classList.remove('text-green-400');
+        gcMessage.classList.add('text-red-500');
+        return;
+      }
+      gcMessage.textContent = `Thank you, ${name}. Your consultation is booked for ${date}.`;
+      gcMessage.classList.remove('text-red-500');
+      gcMessage.classList.add('text-green-400');
+      gcForm.reset();
+      // Close dropdown
+      document.getElementById('general-consultation-dropdown').classList.add('hidden');
+      document.getElementById('general-consultation-toggle').setAttribute('aria-expanded', 'false');
+      document.querySelector('#general-consultation-toggle i.fas.fa-chevron-down').style.transform = 'rotate(0deg)';
+    });
+
+    const amForm = document.getElementById('ancestry-mapping-form');
+    const amMessage = document.getElementById('am-message');
+    amForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      amMessage.textContent = '';
+      const name = amForm['am-name'].value.trim();
+      const email = amForm['am-email'].value.trim();
+      if (!name || !email) {
+        amMessage.textContent = 'Please fill in all required fields.';
+        amMessage.classList.remove('text-green-400');
+        amMessage.classList.add('text-red-500');
+        return;
+      }
+      amMessage.textContent = `Thank you, ${name}. Your ancestry mapping request has been received.`;
+      amMessage.classList.remove('text-red-500');
+      amMessage.classList.add('text-green-400');
+      amForm.reset();
+      // Close dropdown
+      document.getElementById('ancestry-mapping-dropdown').classList.add('hidden');
+      document.getElementById('ancestry-mapping-toggle').setAttribute('aria-expanded', 'false');
+      document.querySelector('#ancestry-mapping-toggle i.fas.fa-chevron-down').style.transform = 'rotate(0deg)';
+    });
+
+    const lrForm = document.getElementById('land-restoration-form');
+    const lrMessage = document.getElementById('lr-message');
+    lrForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      lrMessage.textContent = '';
+      const name = lrForm['lr-name']?.value.trim() || '';
+      const email = lrForm['lr-email']?.value.trim() || '';
+      const location = lrForm['lr-location']?.value.trim() || '';
+      const date = lrForm['lr-date']?.value || '';
+      // The script is not changed as per instructions
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<html class="dark" lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   About &amp; Press Kit - Dark Theme
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: "Inter", sans-serif;
+    }
+    .primary-color {
+      color: #e10600;
+    }
+    .primary-bg {
+      background-color: #e10600;
+    }
+    .btn-primary {
+      background-color: #e10600;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #b00400;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(225, 6, 0, 0.4);
+    }
+    .dark .primary-color {
+      color: #f87171;
+    }
+    .dark .primary-bg {
+      background-color: #f87171;
+    }
+    .dark .btn-primary {
+      background-color: #f87171;
+      color: #1a1a1a;
+    }
+    .dark .btn-primary:hover,
+    .dark .btn-primary:focus {
+      background-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.6);
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1e1e1e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #f87171;
+      border-radius: 10px;
+      border: 2px solid #1e1e1e;
+    }
+    .humanoid-icon {
+      width: 36px;
+      height: 36px;
+      color: #f87171;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .humanoid-icon:hover {
+      color: #ef4444;
+    }
+    a:focus-visible {
+      outline: 2px solid #f87171;
+      outline-offset: 2px;
+    }
+  </style>
+ </head>
+ <body class="dark bg-gray-900 min-h-screen flex flex-col items-center p-6">
+  <nav class="w-full max-w-5xl bg-gray-800 rounded-lg shadow-md mb-12">
+   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
+    <h1 class="text-3xl font-semibold primary-color cursor-pointer" onclick="location.href='index.html'">
+     About Dloziville
+    </h1>
+    <div class="flex space-x-4">
+     <button aria-label="Login" class="focus:outline-none" onclick="location.href='login.html'" title="Login">
+      <svg class="humanoid-icon" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M12 14c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2" stroke-linecap="round" stroke-linejoin="round">
+       </path>
+      </svg>
+     </button>
+
+     <button aria-label="Home" class="focus:outline-none text-gray-400 hover:text-primary-color transition-colors duration-300" onclick="location.href='index.html'" title="Home">
+      <i class="fas fa-home fa-lg">
+      </i>
+     </button>
+    </div>
+   </div>
+  </nav>
+  <main class="max-w-5xl w-full flex-grow space-y-12">
+   <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+    <h2 class="text-3xl font-semibold mb-6 primary-color text-center">
+     Our Mission
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+     <div>
+      <p class="mb-4 text-lg leading-relaxed">
+       Our mission is to educate the community on their past, their heritage and their potential to be everything that their Ancestors were unable to be. 
+            We encourage our students to maintain a healthier more holistic lifestyle by consuming organic food and using natural remedies for ailments.
+      </p>
+      <h2 class="text-3xl font-semibold mb-6 primary-color text-center">
+       Our Vision
+      </h2>
+      <p class="mb-4 text-lg leading-relaxed">
+       Our vision is to create a platform for Africans on the continent and in the Diaspora to be able to access information about their history and heritage.
+            This vision includes a facility where we will research and test African medical methods and treatments that align with the African laws of nature.
+      </p>
+      <div class="flex space-x-4 mt-6">
+       <a class="btn-primary px-6 py-3 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color inline-flex items-center" href="#press-kit">
+        <i class="fas fa-download mr-2">
+        </i>
+        Download Press Kit
+       </a>
+       <a class="btn-primary px-6 py-3 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color inline-flex items-center" href="index.html">
+        <i class="fas fa-arrow-left mr-2">
+        </i>
+        Back to Home
+       </a>
+      </div>
+     </div>
+     <div class="flex justify-center">
+      <img alt="A modern office scene showing a diverse team collaborating around a table with laptops and digital devices, in a dark-themed environment with red accent lighting" class="rounded-lg shadow-lg max-w-full h-auto" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/c3483178-4d23-4f60-bc3a-a1982c3f359a.jpg" width="600"/>
+     </div>
+    </div>
+   </section>
+   <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+    <h2 class="text-3xl font-semibold mb-6 primary-color text-center">
+     Our Story
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+     <div>
+      <p class="mb-4 text-lg leading-relaxed">
+       Dloziville was founded by Ingwekazi Nokuthula Mnguni-Merrique in 2019 as a community based project. The project delivered over 400 meal kits at almost cost price to people in rural areas during the global pandemic.
+      </p>
+      <p class="mb-4 text-lg leading-relaxed">
+       These meal kits consisted of locally sourced high quality meat and produce to promote immunity during the COVID-19 lockdown period. Households that were run by the elderly or children received extra support from our founder who prepared the meals and educated the household on how to maintain their hygiene and health.
+      </p>
+      <p class="mb-4 text-lg leading-relaxed">
+       This aspect of the project was carried out with the valued assistance of the Local Economic Development unit at Nquthu Local Municipality (Umzinyathi). It was and still is funded only by the students and the community it serves.
+      </p>
+     </div>
+     <div class="flex justify-center">
+      <img alt="Volunteers distributing meal kits to rural families during the COVID-19 pandemic, showing community support and care in a natural outdoor setting" class="rounded-lg shadow-lg max-w-full h-auto" height="400" loading="lazy" src="https://storage.googleapis.com/a1aa/image/bddcd566-ae59-408d-0ebf-bbced8f63218.jpg" width="600"/>
+     </div>
+    </div>
+    <div class="mt-8">
+     <h3 class="text-2xl font-semibold mb-4 primary-color text-center">
+      Areas Serviced in Umzinyathi Region
+     </h3>
+     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-center">
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Nquthu Township and rural localities
+      </div>
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Qudeni
+      </div>
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Masotheni / Masotsheng
+      </div>
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Mafihleni / Mafitleng
+      </div>
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Thelezini
+      </div>
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Mondlo
+      </div>
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Msinga
+      </div>
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Sibongile Township (Endumeni)
+      </div>
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Sithembile Township (Glencoe)
+      </div>
+      <div class="bg-gray-700 p-3 rounded-lg">
+       Ncome (Blood River)
+      </div>
+     </div>
+    </div>
+    <div class="mt-8">
+     <p class="mb-4 text-lg leading-relaxed">
+      Since then, Dloziville has grown into an educational academy that promotes holistic healthcare and creative learning as was practiced by our Ancestors. We currently have 70 enrolled students who are actively learning about history, culture, and various other subjects under a curriculum that is designed to make learning fun and engaging.
+     </p>
+     <p class="mb-4 text-lg leading-relaxed">
+      The IsiZulu word "Dlozi" means Ancestor, speaking to those who walked before us and sought to better the world so that we would one day thrive in it. The English term "ville" speaks to our community vision.
+     </p>
+    </div>
+    <div class="mt-8 bg-gray-700 p-6 rounded-lg">
+     <h3 class="text-xl font-semibold mb-4 primary-color text-center">
+      In Dedication
+     </h3>
+     <p class="mb-4 text-lg leading-relaxed text-center">
+      This project is dedicated to Welekazi Nomhle Mdiya (owakwa Mvulane, ongu Msuthu wama Vundle) and Mesuli Eric Francis Mnguni (owakwa Mzimela, ongu Lwandle) who were both educators and servants of their community.
+     </p>
+     <p class="mb-4 text-lg leading-relaxed text-center">
+      It also honours Matron Botha (Glencoe Primary School) and Dr. Helen Watson (University of KwaZulu-Natal).
+     </p>
+     <p class="text-lg leading-relaxed text-center italic">
+      May their spirits of love, sharing and creativity live on through us.
+     </p>
+    </div>
+   </section>
+   <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200">
+    <h2 class="text-3xl font-semibold mb-6 primary-color text-center">
+     Our Team
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+     <div class="bg-gray-700 p-6 rounded-lg">
+      <h3 class="text-xl font-semibold mb-2 primary-color">
+       Ingwekazi Nokuthula Mnguni-Merrique
+      </h3>
+      <p class="mb-4 font-medium">
+       Founder and Principal Lecturer
+      </p>
+      <h4 class="font-semibold mb-2">
+       Disciplines:
+      </h4>
+      <ul class="list-disc pl-5 space-y-1">
+       <li>
+        Cultural History
+       </li>
+       <li>
+        Traditional Medicine
+       </li>
+       <li>
+        Environmental Management
+       </li>
+       <li>
+        Information Architecture
+       </li>
+       <li>
+        Data Science
+       </li>
+       <li>
+        Music
+       </li>
+       <li>
+        Somatic Science
+       </li>
+      </ul>
+     </div>
+     <div class="bg-gray-700 p-6 rounded-lg">
+      <h3 class="text-xl font-semibold mb-2 primary-color">
+       Katlego Sebona
+      </h3>
+      <p class="mb-4 font-medium">
+       Chief Technology Officer and Lecturer
+      </p>
+      <h4 class="font-semibold mb-2">
+       Disciplines:
+      </h4>
+      <ul class="list-disc pl-5 space-y-1">
+       <li>
+        Software Programming
+       </li>
+       <li>
+        Information Architecture
+       </li>
+       <li>
+        Data Science
+       </li>
+      </ul>
+     </div>
+    </div>
+    <div class="mt-8 text-center">
+     <a class="btn-primary px-6 py-3 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color inline-flex items-center" href="https://bit.ly/DlozivilleDonation">
+      <i class="fas fa-heart mr-2">
+      </i>
+      Donate to Support Our Mission
+     </a>
+    </div>
+   </section>
+   <section class="bg-gray-800 rounded-lg shadow-md p-6 text-gray-200" id="press-kit">
+    <h2 class="text-3xl font-semibold mb-6 primary-color text-center">
+     Press Kit
+    </h2>
+    <p class="mb-6 text-lg leading-relaxed max-w-3xl mx-auto text-center">
+     Our press kit contains all the essential materials for media and partners, including logos, brand guidelines, high-resolution images, and company information. Feel free to download and use these assets for your coverage or collaboration.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+     <a class="flex flex-col items-center bg-gray-700 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer" download="Dloziville_Logo_Primary.png" href="https://placehold.co/600x400/png?text=Dloziville+Logo+Primary">
+      <img alt="Dloziville primary logo in red and white on transparent background" class="mb-4 rounded" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/d853989e-a0ba-430f-aec2-c77591f0d913.jpg" width="200"/>
+      <span class="text-lg font-semibold text-gray-200">
+       Primary Logo
+      </span>
+      <i class="fas fa-download mt-2 text-primary-color">
+      </i>
+     </a>
+     <a class="flex flex-col items-center bg-gray-700 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer" download="Dloziville_Logo_Secondary.png" href="https://placehold.co/600x400/png?text=Dloziville+Logo+Secondary">
+      <img alt="Dloziville secondary logo in white and red on dark background" class="mb-4 rounded" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/e8a62851-510d-4c10-5ad8-38846de7f52f.jpg" width="200"/>
+      <span class="text-lg font-semibold text-gray-200">
+       Secondary Logo
+      </span>
+      <i class="fas fa-download mt-2 text-primary-color">
+      </i>
+     </a>
+     <a class="flex flex-col items-center bg-gray-700 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer" download="Dloziville_Brand_Guidelines.pdf" href="https://placehold.co/600x400/png?text=Brand+Guidelines+PDF">
+      <img alt="Icon representing a PDF document for brand guidelines" class="mb-4 rounded" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/74dfad49-b028-4f87-0d7c-01b00a7d7006.jpg" width="200"/>
+      <span class="text-lg font-semibold text-gray-200">
+       Brand Guidelines
+      </span>
+      <i class="fas fa-download mt-2 text-primary-color">
+      </i>
+     </a>
+     <a class="flex flex-col items-center bg-gray-700 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 cursor-pointer" download="Dloziville_Company_Profile.pdf" href="https://placehold.co/600x400/png?text=Company+Profile+PDF">
+      <img alt="Icon representing a PDF document for company profile" class="mb-4 rounded" height="200" loading="lazy" src="https://storage.googleapis.com/a1aa/image/c123d31a-c4eb-4271-2e19-94b773459e78.jpg" width="200"/>
+      <span class="text-lg font-semibold text-gray-200">
+       Company Profile
+      </span>
+      <i class="fas fa-download mt-2 text-primary-color">
+      </i>
+     </a>
+    </div>
+    <div class="mt-10 text-center text-gray-400 text-sm max-w-3xl mx-auto">
+     <p>
+      For additional media inquiries, please contact
+      <a class="primary-color underline" href="mailto:press@dloziville.com">
+       press@dloziville.com
+      </a>
+      .
+     </p>
+    </div>
+   </section>
+  </main>
+  <footer class="w-full max-w-7xl bg-gray-800 rounded-lg shadow-inner mt-12 p-6 text-gray-300">
+   <div class="flex flex-col md:flex-row md:justify-between md:items-center space-y-6 md:space-y-0">
+    <div class="flex space-x-6 justify-center md:justify-start items-center">
+     <a aria-label="Facebook" class="hover:text-primary-color transition-colors duration-300" href="#">
+      <i class="fab fa-facebook-f text-2xl">
+      </i>
+     </a>
+     <a aria-label="Twitter" class="hover:text-primary-color transition-colors duration-300" href="#">
+      <i class="fab fa-twitter text-2xl">
+      </i>
+     </a>
+     <a aria-label="Instagram" class="hover:text-primary-color transition-colors duration-300" href="#">
+      <i class="fab fa-instagram text-2xl">
+      </i>
+     </a>
+     <a aria-label="LinkedIn" class="hover:text-primary-color transition-colors duration-300" href="#">
+      <i class="fab fa-linkedin-in text-2xl">
+      </i>
+     </a>
+    </div>
+    <div class="flex space-x-6 justify-center md:justify-center">
+     <a class="hover:text-primary-color transition-colors duration-300 font-semibold" href="#">
+      Policies
+     </a>
+     <a class="hover:text-primary-color transition-colors duration-300 font-semibold" href="#">
+      FAQs
+     </a>
+    </div>
+    <div class="text-center md:text-right text-sm">
+     Built by KatlegoThatGuy © 2025 Dloziville
+    </div>
+    <form aria-label="Site Search" class="flex flex-wrap justify-center md:justify-end space-x-0 md:space-x-2 gap-2 md:gap-0" role="search">
+     <label class="sr-only" for="footer-search">
+      Search
+     </label>
+     <input class="rounded-l-md border border-gray-600 bg-gray-900 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-color focus:border-primary-color px-3 py-1 w-48" id="footer-search" placeholder="Search..." type="search"/>
+     <button class="btn-primary rounded-r-md px-4 py-1 font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color" type="submit">
+      <i class="fas fa-search">
+      </i>
+     </button>
+     <a class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap" href="register.html">
+      Register
+     </a>
+     <a class="btn-primary px-4 py-1 rounded-md font-semibold hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-primary-color flex items-center justify-center whitespace-nowrap" href="login.html">
+      Login
+     </a>
+    </form>
+   </div>
+  </footer>
+ </body>
+</html>
