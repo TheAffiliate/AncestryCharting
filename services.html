@@ -1,4 +1,4 @@
-<html lang="en" class="dark">
+THIS SHOULD BE A LINTER ERROR<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -110,6 +110,10 @@
       <h2 class="text-2xl font-semibold mb-6 primary-color flex items-center">
         <i class="fas fa-stethoscope mr-3 text-primary-color text-3xl"></i> General Consultation
       </h2>
+      <div class="mb-4 p-3 bg-gray-900 rounded-md border-l-4 border-primary-color">
+        <p class="text-primary-color font-semibold text-lg">Service Fee: R500</p>
+        <p class="text-sm text-gray-300">One-on-one consultation session</p>
+      </div>
       <form id="general-consultation-form" class="space-y-4 max-w-md">
         <button type="button" aria-expanded="false" aria-controls="general-consultation-dropdown" id="general-consultation-toggle" class="w-full flex justify-between items-center btn-primary px-4 py-2 rounded-md font-semibold focus:outline-none focus:ring-2 focus:ring-primary-color">
           Book a Consultation
@@ -412,6 +416,9 @@
     </div>
   </footer>
 
+  <!-- PayFast Payment Integration -->
+  <script src="payment-integration.js"></script>
+  
   <script>
     // Toggle dropdowns
     function toggleDropdown(buttonId, dropdownId) {
@@ -441,64 +448,78 @@
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('gc-date').setAttribute('min', today);
 
-    // Form submissions with simple success message and reset
+    // Enhanced form submissions with payment integration
     const gcForm = document.getElementById('general-consultation-form');
     const gcMessage = document.getElementById('gc-message');
-    gcForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      gcMessage.textContent = '';
-      const name = gcForm['gc-name'].value.trim();
-      const email = gcForm['gc-email'].value.trim();
-      const date = gcForm['gc-date'].value;
-      if (!name || !email || !date) {
-        gcMessage.textContent = 'Please fill in all fields.';
-        gcMessage.classList.remove('text-green-400');
-        gcMessage.classList.add('text-red-500');
-        return;
-      }
-      gcMessage.textContent = `Thank you, ${name}. Your consultation is booked for ${date}.`;
-      gcMessage.classList.remove('text-red-500');
-      gcMessage.classList.add('text-green-400');
-      gcForm.reset();
-      // Close dropdown
-      document.getElementById('general-consultation-dropdown').classList.add('hidden');
-      document.getElementById('general-consultation-toggle').setAttribute('aria-expanded', 'false');
-      document.querySelector('#general-consultation-toggle i.fas.fa-chevron-down').style.transform = 'rotate(0deg)';
-    });
+    handleFormSubmissionWithPayment(gcForm, 'general-consultation', gcMessage);
 
     const amForm = document.getElementById('ancestry-mapping-form');
     const amMessage = document.getElementById('am-message');
-    amForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      amMessage.textContent = '';
-      const name = amForm['am-name'].value.trim();
-      const email = amForm['am-email'].value.trim();
-      if (!name || !email) {
-        amMessage.textContent = 'Please fill in all required fields.';
-        amMessage.classList.remove('text-green-400');
-        amMessage.classList.add('text-red-500');
-        return;
-      }
-      amMessage.textContent = `Thank you, ${name}. Your ancestry mapping request has been received.`;
-      amMessage.classList.remove('text-red-500');
-      amMessage.classList.add('text-green-400');
-      amForm.reset();
-      // Close dropdown
-      document.getElementById('ancestry-mapping-dropdown').classList.add('hidden');
-      document.getElementById('ancestry-mapping-toggle').setAttribute('aria-expanded', 'false');
-      document.querySelector('#ancestry-mapping-toggle i.fas.fa-chevron-down').style.transform = 'rotate(0deg)';
-    });
+    handleFormSubmissionWithPayment(amForm, 'ancestry-mapping', amMessage);
 
-    const lrForm = document.getElementById('land-restoration-form');
-    const lrMessage = document.getElementById('lr-message');
-    lrForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      lrMessage.textContent = '';
-      const name = lrForm['lr-name']?.value.trim() || '';
-      const email = lrForm['lr-email']?.value.trim() || '';
-      const location = lrForm['lr-location']?.value.trim() || '';
-      const date = lrForm['lr-date']?.value || '';
-      // The script is not changed as per instructions
+    const lrForm = document.getElementById('land-claim-form');
+    const lrMessage = document.createElement('p');
+    lrMessage.id = 'lr-message';
+    lrMessage.className = 'mt-2 text-sm';
+    lrForm.appendChild(lrMessage);
+    handleFormSubmissionWithPayment(lrForm, 'land-restoration', lrMessage);
+
+    // Dynamic pricing calculator for land restoration
+    function updateLandRestorationPricing() {
+      const surnamesTextarea = document.getElementById('surnames');
+      const deedOfficeInputs = document.querySelectorAll('input[name="deed-office"]');
+      const pricingDisplay = document.getElementById('pricing-display') || createPricingDisplay();
+
+      function calculateAndDisplay() {
+        const surnames = surnamesTextarea.value.trim();
+        const surnameCount = surnames.split('\n').filter(line => line.trim()).length || 0;
+        const surnamesCost = surnameCount * 700;
+
+        let deedCost = 0;
+        deedOfficeInputs.forEach(input => {
+          if (input.checked) {
+            deedCost = 800;
+          }
+        });
+
+        const total = surnamesCost + deedCost;
+        
+        let breakdown = '';
+        if (surnameCount > 0) {
+          breakdown += `${surnameCount} surname(s) × R700 = R${surnamesCost}`;
+        }
+        if (deedCost > 0) {
+          breakdown += (breakdown ? ' + ' : '') + `Deed verification = R${deedCost}`;
+        }
+        if (total > 0) {
+          breakdown += ` = Total: R${total}`;
+        }
+
+        pricingDisplay.textContent = breakdown || 'Enter surnames to see pricing';
+        pricingDisplay.className = total > 0 ? 'text-primary-color font-semibold text-lg' : 'text-gray-400 text-sm';
+      }
+
+      surnamesTextarea.addEventListener('input', calculateAndDisplay);
+      deedOfficeInputs.forEach(input => {
+        input.addEventListener('change', calculateAndDisplay);
+      });
+
+      calculateAndDisplay();
+    }
+
+    function createPricingDisplay() {
+      const display = document.createElement('div');
+      display.id = 'pricing-display';
+      display.className = 'mt-4 p-3 bg-gray-900 rounded-md border-l-4 border-primary-color';
+      
+      const surnamesField = document.getElementById('surnames').parentNode;
+      surnamesField.appendChild(display);
+      return display;
+    }
+
+    // Initialize pricing calculator when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      updateLandRestorationPricing();
     });
   </script>
 </body>
